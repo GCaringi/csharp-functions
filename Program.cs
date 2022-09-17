@@ -1,9 +1,11 @@
 ﻿void stampaArray(int[] array)
 {
+    Console.Write("[ ");
     foreach(int elem in array)
     {
         Console.Write($"{elem} ");
     }
+    Console.Write(']');
 }
 
 int pow (int num)
@@ -53,4 +55,43 @@ Console.WriteLine(totalSumArray(localArray));
 Console.WriteLine("Stampo la somma di tutti i numeri dell'array con elementi al quadrato");
 Console.WriteLine(totalSumArray(powArray));
 
+//BONUS
+
+int[] arrayFromUser(int size)
+{
+    int[] tmpArray = new int[size];
+    
+    for (int i = 0; i < size; i++)
+    {
+        Console.WriteLine("Inserisci un numero: ");
+        int tmpNum = Convert.ToInt32(Console.ReadLine());
+        tmpArray[i] = tmpNum;
+        Console.WriteLine();
+    }
+
+    return tmpArray;
+}
+
+Console.WriteLine("Bonus");
+Console.WriteLine();
+Console.Write("Quanti numeri vuoi inserire: ");
+int size = Convert.ToInt32(Console.ReadLine());
+
+int[] userArray = arrayFromUser(size);
+
+Console.WriteLine("Stampo l'array");
+stampaArray(userArray);
+
+Console.WriteLine("\nStampo l'array con gli elementi elevati al quadrato");
+int[] userPowArray = powElemArray(userArray);
+stampaArray(userPowArray);
+
+Console.WriteLine("\nVerifico se l'array originale non sia stato modificato");
+stampaArray(userArray);
+
+Console.WriteLine("\nStampo la somma di tutti i numeri dell'array originale");
+Console.WriteLine(totalSumArray(userArray));
+
+Console.WriteLine("Stampo la somma di tutti i numeri dell'array con elementi al quadrato");
+Console.WriteLine(totalSumArray(userPowArray));
 
